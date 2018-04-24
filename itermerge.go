@@ -7,10 +7,10 @@ import (
 )
 
 // Type is the generic placeholder.
-type Type Lesser
+type Type looseLesser
 
-// Lesser is the generic placeholder interface, for Less method.
-type Lesser interface {
+// looseLesser is the generic placeholder interface, for Less method.
+type looseLesser interface {
 	Less(x interface{}) bool
 }
 
@@ -19,8 +19,8 @@ type IterMerge struct {
 	h iterHeap
 }
 
-// New creates a new Spanheap from user-defined iterator of sorted elements.
-func New(nexts ...func() (info Type, ok bool)) *IterMerge {
+//IterMergeFrom creates a new heap of iterators from user-defined iterator of sorted elements.
+func IterMergeFrom(nexts ...func() (info Type, ok bool)) *IterMerge {
 	h := make(iterHeap, 0, len(nexts))
 	for _, next := range nexts {
 		if info, ok := next(); ok {

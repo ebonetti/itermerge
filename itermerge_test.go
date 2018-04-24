@@ -11,9 +11,9 @@ const (
 
 func Test(t *testing.T) {
 	gc := generator(MIN, MAX)
-	iterMerge := New(chan2func(gc))
+	iterMerge := IterMergeFrom(chan2func(gc))
 
-	if v, ok := iterMerge.Peek(); v.(myType) != myType(MIN) || !ok {
+	if v, ok := iterMerge.Peek(); v.(myType) != MIN || !ok {
 		t.Errorf("Peek should return %v,%v, instead it returns %v,%v", MIN, true, v, ok)
 	}
 
